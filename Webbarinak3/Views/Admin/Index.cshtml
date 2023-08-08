@@ -1,0 +1,33 @@
+﻿@using Webbarinak3.Models.Siniflar
+@model List<Animal>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Hayvan Listesi</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> ID </th>
+        <th> Turu </th>
+        <th> Cinsi </th>
+        <th> Yasi </th>
+        <th> Saglik Durumu </th>
+        <th> SİL </th>
+        <th> GÜNCELLE </th>
+    </tr>
+    @foreach(var x in Model){
+    <tr>
+            <td>@x.AnimalID</td>
+            <td>@x.Turu</td>
+            <td>@x.Cinsi</td>
+            <td>@x.Yasi</td>
+            <td>@x.SaglikDurumu</td>
+            <td><a href="/Admin/GetAnimals/@x.AnimalID" class="btn btn-success">Guncelle</a></td>
+            <td><a href="/Admin/DeleteAnimals/@x.AnimalID" class="btn btn-danger">Sil</a></td>
+    </tr>
+    }
+</table>
+<a href="/Admin/NewAnimals/" class="btn btn-primary">Yeni Hayvan</a>
+

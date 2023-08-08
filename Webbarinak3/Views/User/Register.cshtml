@@ -1,0 +1,35 @@
+﻿@model Webbarinak3.Models.Siniflar.User
+@{
+    ViewData["Title"] = "Kayit Ol";
+    Layout = "_Layout";
+}
+
+<h2>Yeni Kullanıcı Ekleme</h2>
+@if (TempData["Hata"] is not null)
+{
+    <h3 style="color:red">@TempData["Hata"]</h3>
+}
+@if (TempData["Kayit"] is not null)
+{
+    <h3 style="color:green">@TempData["Kayit"]</h3>
+}
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x=>x.Name)
+    @Html.TextBoxFor(x=>x.Name, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Surname)
+    @Html.TextBoxFor(x=>x.Surname, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Email)
+    @Html.TextBoxFor(x=>x.Email, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.UserName)
+    @Html.TextBoxFor(x=>x.UserName, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Password)
+    @Html.PasswordFor(x=>x.Password, new{@class="form-control"})
+    <br />
+    <button class="btn btn-primary">Kayit Ol</button>
+</form>
+

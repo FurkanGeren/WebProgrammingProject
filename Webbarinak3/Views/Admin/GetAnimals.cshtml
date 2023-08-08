@@ -1,0 +1,31 @@
+﻿@model Webbarinak3.Models.Siniflar.Animal
+@{
+    ViewData["Title"] = "Hayvanlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Urun Guncelleme Sayfası</h1>
+<br />
+@if (TempData["Hata"] is not null)
+{
+    <h3 style="color:red">@TempData["Hata"]</h3>
+}
+@using (Html.BeginForm("UpdateAnimals", "Admin", FormMethod.Post))
+{
+    @Html.LabelFor(x=>x.AnimalID)
+    @Html.TextBoxFor(x=>x.AnimalID, new{@class="form-control", @readonly="readonly" })
+    <br />
+    @Html.LabelFor(x=>x.Turu)
+    @Html.DropDownListFor(x=>x.Turu,new SelectList(ViewBag.AnimalType),new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Cinsi)
+    @Html.TextBoxFor(x=>x.Cinsi, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Yasi)
+    @Html.TextBoxFor(x=>x.Yasi, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.SaglikDurumu)
+    @Html.DropDownListFor(x=>x.SaglikDurumu,new SelectList(ViewBag.Health), new{@class="form-control"})
+    <br />
+    <button class="btn btn-primary">Ürün Güncelle</button>
+}

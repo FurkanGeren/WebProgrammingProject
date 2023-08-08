@@ -1,0 +1,34 @@
+﻿@using Webbarinak3.Models.Siniflar
+@model List<Request2>
+@{
+    ViewData["Title"] = "Sahiplendirme Formu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Sahiplendirme Formu</h1>
+@if (TempData["Hata"] is not null)
+{
+    <h3 style="color:red">@TempData["Hata"]</h3>
+}
+<table class="table table-bordered">
+    <tr>
+        <th> Turu </th>
+        <th> Cinsi </th>
+        <th> Yasi </th>
+        <th> Saglik Durumu </th>
+        <th> Onayla </th>
+        <th> Reddet </th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Turu</td>
+            <td>@x.Cinsi</td>
+            <td>@x.Yasi</td>
+            <td>@x.SaglikDurumu</td>
+            <td><a href="/Admin/FormAdd/@x.Request2ID" class="btn btn-success">Onayla</a></td>
+            <td><a href="/Admin/FormIgnore/@x.Request2ID" class="btn btn-danger">Reddet</a></td>
+        </tr>
+    }
+</table>
+

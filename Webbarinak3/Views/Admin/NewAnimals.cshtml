@@ -1,0 +1,28 @@
+﻿@model Webbarinak3.Models.Siniflar.Animal
+@{
+    ViewData["Title"] = "Yeni Hayvan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Hayvan Ekleme</h2>
+@if (TempData["Hata"] is not null)
+{
+    <h3 style="color:red">@TempData["Hata"]</h3>
+}
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x=>x.Turu)
+    @Html.DropDownListFor(x=>x.Turu,new SelectList(ViewBag.AnimalType),"Seçiniz", new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Cinsi)
+    @Html.TextBoxFor(x=>x.Cinsi, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.Yasi)
+    @Html.TextBoxFor(x=>x.Yasi, new{@class="form-control"})
+    <br />
+    @Html.LabelFor(x=>x.SaglikDurumu)
+    @Html.DropDownListFor(x=>x.SaglikDurumu,new SelectList(ViewBag.Health),"Seçiniz", new{@class="form-control"})
+    <br />
+    <button class="btn btn-primary">Hayvan Ekle</button>
+</form>
+

@@ -1,0 +1,28 @@
+﻿@using Webbarinak3.Models.Siniflar
+@model List<AnimalType>
+@{
+    ViewData["Title"] = "Tur Liste";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Hayvan Tür Listesi</h1>
+@if (TempData["Hata"] is not null)
+{
+    <h3 style="color:red">@TempData["Hata"]</h3>
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> Turu </th>
+        <th> SİL </th>        
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.AnimalTur</td>
+            <td><a href="/Admin/DeleteAnimalTypes/@x.AnimalTypeID" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+<a href="/Admin/AddTur/" class="btn btn-primary">Yeni Tür</a>
+

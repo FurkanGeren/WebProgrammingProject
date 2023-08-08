@@ -1,0 +1,35 @@
+﻿@using Webbarinak3.Models.Siniflar
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout2";
+}
+@model List<Animal>
+@if (TempData["Basarili"] is not null)
+{
+    <h3 style="color:green">@TempData["Basarili"]</h3>
+}
+<br />
+<h1>Hayvan Listesi</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> Turu </th>
+        <th> Cinsi </th>
+        <th> Yasi </th>
+        <th> Saglik Durumu </th>
+        <th> Sahiplen </th>
+
+    </tr>
+    @foreach (var q in Model)
+    {
+        <tr>
+            <td>@q.Turu</td>
+            <td>@q.Cinsi</td>
+            <td>@q.Yasi</td>
+            <td>@q.SaglikDurumu</td>         
+            <td> <a href="@Url.Action("Sahiplen", "Request", new { animalId = q.AnimalID })" class="btn btn-success">Sahiplen</a></td>
+        </tr>
+    }
+</table>

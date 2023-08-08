@@ -1,0 +1,37 @@
+﻿@model Webbarinak3.Models.Login;
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <form asp-asp-controller="Access" asp-action="Login" method="post">
+        <h1>Giriş</h1>
+        <input type="email" placeholder="Email" asp-for="Email" />
+        <input type="password" placeholder="Şifre" asp-for="Password" />
+
+
+        <label>
+            <input type="checkbox" asp-for="KeepLogedIn" />
+            Oturumumu açık tut.
+        </label>
+        <button type="submit">Giriş</button>
+
+        @if (ViewData["ValidateMessage"] != null)
+        {
+            <br />
+            <br />
+            <label>@ViewData["ValidateMessage"]</label>
+        }
+
+    </form>
+</body>
+</html>

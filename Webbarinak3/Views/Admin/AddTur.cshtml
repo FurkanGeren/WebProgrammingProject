@@ -1,0 +1,19 @@
+﻿@model Webbarinak3.Models.Siniflar.AnimalType
+@{
+    ViewData["Title"] = "Tur Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Tur Ekleme</h2>
+@if (TempData["Hata"] is not null)
+{
+    <h3 style="color:red">@TempData["Hata"]</h3>
+}
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x=>x.AnimalTur)
+    @Html.TextBoxFor(x=>x.AnimalTur, new{@class="form-control"})
+    <br />
+    <button class="btn btn-primary">Tür Ekle</button>
+</form>
+

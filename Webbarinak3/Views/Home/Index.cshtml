@@ -1,0 +1,37 @@
+﻿@using Webbarinak3.Models.Siniflar
+@model List<Animal>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+@if (TempData["Basarili"] is not null)
+{
+    <h3 style="color:green">@TempData["Basarili"]</h3>
+}
+<br />
+<h1>Hayvan Listesi</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th> Turu </th>
+        <th> Cinsi </th>
+        <th> Yasi </th>
+        <th> Saglik Durumu </th>
+        <th> Sahiplen </th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Turu</td>
+            <td>@x.Cinsi</td>
+            <td>@x.Yasi</td>
+            <td>@x.SaglikDurumu</td>
+            @* <td><a href="@Url.Action("setTalep", "Request", new { id = x.AnimalID })" class="btn btn-success">Sahiplen</a></td>*@
+            @*<td><a href="/Request/setTalep/@x.AnimalID" class="btn btn-success">Sahiplen</a></td>*@
+            <td><a href="/UserAccess/UserLogin" class="btn btn-success">Sahiplen</a></td>
+            @* <td><a href="/Home/TalepAnimals/@x.AnimalID" class="btn btn-success">Sahiplen</a></td>*@
+        </tr>
+    }
+</table>

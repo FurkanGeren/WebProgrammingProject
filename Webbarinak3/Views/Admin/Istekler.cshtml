@@ -1,0 +1,33 @@
+﻿@using Webbarinak3.Models.Siniflar
+@model List<Request>
+@{
+    ViewData["Title"] = "Sahiplenme Talepleri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Sahiplenme Talepleri</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th> Turu </th>
+        <th> Cinsi </th>
+        <th> Yasi </th>
+        <th> Saglik Durumu </th>
+        <th> Basvuru Tarihi </th>
+        <th> Onayla </th>
+        <th> Reddet </th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Turu</td>
+            <td>@x.Cinsi</td>
+            <td>@x.Yasi</td>
+            <td>@x.SaglikDurumu</td>
+            <td>@x.CreatedTime</td>
+            <td><a href="/Admin/RequestOnayla/@x.RequestID" class="btn btn-success">Onayla</a></td>
+            <td><a href="/Admin/RequestReddet/@x.RequestID" class="btn btn-danger">Reddet</a></td>
+        </tr>
+    }
+</table>
+
